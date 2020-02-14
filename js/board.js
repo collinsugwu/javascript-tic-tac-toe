@@ -37,7 +37,7 @@ const game = () => {
       (arrayPosition[0 + index] + arrayPosition[3 + index] + arrayPosition[6 + index] == symbol * 3) ||
       (arrayPosition[0 + (index * 2)] + arrayPosition[4] + arrayPosition[8 - (index * 2)] == symbol * 3 && index < 2)) return true;
 
-    return true;
+    return false;
   };
 
   const winner = () => {
