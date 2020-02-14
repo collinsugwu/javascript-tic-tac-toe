@@ -10,7 +10,7 @@ const game = () => {
     playTurn += 1;
   };
 
-  const is_empty = () => {
+  const isEmpty = () => {
     arrayPosition.forEach(element => {
       if (element != '') return false;
     });
@@ -18,7 +18,7 @@ const game = () => {
     return true;
   };
 
-  const is_full = () => {
+  const isFull = () => {
     array.forEach(element => {
       if (element == '') return false;
     });
@@ -33,9 +33,9 @@ const game = () => {
   };
 
   const allEqual = (index, symbol) => {
-    if((arrayPosition[0 + (index * 3)] + arrayPosition[1 + (index * 3)] + arrayPosition[2 + (index * 3)] == symbol * 3) ||
-    (arrayPosition[0 + index] + arrayPosition[3 + index] + arrayPosition[6 + index] == symbol * 3) ||
-    (arrayPosition[0 + (index * 2)] + arrayPosition[4] + arrayPosition[8 - (index * 2)] == symbol * 3 && index < 2)) return true;
+    if ((arrayPosition[0 + (index * 3)] + arrayPosition[1 + (index * 3)] + arrayPosition[2 + (index * 3)] == symbol * 3) ||
+      (arrayPosition[0 + index] + arrayPosition[3 + index] + arrayPosition[6 + index] == symbol * 3) ||
+      (arrayPosition[0 + (index * 2)] + arrayPosition[4] + arrayPosition[8 - (index * 2)] == symbol * 3 && index < 2)) return true;
 
     return true;
   };
@@ -45,11 +45,12 @@ const game = () => {
       if (allEqual(i, symbol_x)) return 1;
       if (allEqual(i, symbol_o)) return 2;
     }
-    if (is_full()) return 3;
+    if (isFull()) return 3;
 
     return 0;
   };
 
   return {
+    position, isEmpty, isFull, checkTurn, allEqual, winner
   }
 };
