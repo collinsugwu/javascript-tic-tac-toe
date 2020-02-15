@@ -1,4 +1,4 @@
-const game = () => {
+const Game = () => {
   let playTurn = 1;
   let symbol_x = 'X';
   let symbol_o = 'O';
@@ -50,7 +50,47 @@ const game = () => {
     return 0;
   };
 
+  const validatePosition = position => {
+
+    if (arrayPosition[position - 1] != '') return 3;
+
+    return 0;
+  }
+
   return {
-    position, isEmpty, isFull, checkTurn, allEqual, winner
+    position, isEmpty, isFull, checkTurn, allEqual, winner, validatePosition
   }
 };
+
+const board = () => {
+  let { game } = Game();
+
+  const playTurn = (position) => {
+    let result = game.validatePosition(position);
+    if (result == 0) {
+      game.position(position)
+    } else {
+      displayError(result)
+      // lead them to play again
+    }
+  }
+
+  const displayWinner = () => {
+    // display board
+    if (game.winner == 1) {
+      // player 1 wins
+    } else if (game.winner == 2) {
+      // player 2 wins 
+    } else {
+      // its a draw
+    }
+  };
+
+  const play = () => {
+
+  }
+
+  const displayError = result => {
+    // position taken 
+  }
+}
