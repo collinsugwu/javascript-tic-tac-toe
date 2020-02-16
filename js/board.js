@@ -6,7 +6,7 @@ const Game = () => {
 
   const position = (position) => {
     arrayPosition[position - 1] = playTurn % 2 == 0 ? symbol_x : symbol_o;
-
+    console.log(arrayPosition)
     playTurn += 1;
   };
 
@@ -51,7 +51,7 @@ const Game = () => {
 
   const validatePosition = position => {
 
-    if (arrayPosition[position - 1] != '') return 'Position Taken';
+    if (arrayPosition[position - 1] != ' ') return 'Position Taken';
 
     return 0;
   }
@@ -64,10 +64,10 @@ const Game = () => {
 const Board = () => {
   let { position, validatePosition, winner } = Game();
 
-  const playTurn = position => {
-    let result = validatePosition(position);
+  const playTurn = positionValue => {
+    let result = validatePosition(positionValue);
     if (result == 0) {
-      position(position)
+      position(positionValue)
     } else {
       document.querySelector('.error').innerHTML = result;
     }
@@ -84,9 +84,9 @@ const Board = () => {
   };
 
   const play = (value) => {
-    while (winner() == 0) {
+    // while (winner() == 0) {
       playTurn(value)
-    }
+    // }
   };
 
   return {play, displayWinner, playTurn };
