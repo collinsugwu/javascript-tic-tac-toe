@@ -52,31 +52,29 @@ const Game = () => {
 
   const validatePosition = position => {
 
-    if (arrayPosition[position - 1] != '') return 3;
+    if (arrayPosition[position - 1] != '') return 'Position Taken';
 
     return 0;
   }
 
   return {
-    position, isEmpty, isFull, checkTurn, allEqual, winner, validatePosition
+    position, isEmpty, isFull, checkTurn, allEqual, winner, validatePosition, arrayPosition
   }
 };
 
-const board = () => {
-  let { game } = Game();
+const Board = () => {
+  let { position, validatePosition, winner } = Game();
 
-  const playTurn = (position) => {
-    let result = game.validatePosition(position);
+  const playTurn = position => {
+    let result = validatePosition(position);
     if (result == 0) {
-      game.position(position)
+      position(position)
     } else {
-      displayError(result)
-      // lead them to play again
+      document.querySelector('.error').innerHTML = result;
     }
   }
 
   const displayWinner = () => {
-    // display board
     if (game.winner == 1) {
       // player 1 wins
     } else if (game.winner == 2) {
@@ -86,11 +84,43 @@ const board = () => {
     }
   };
 
-  const play = () => {
+  const play = (value) => {
+    while (winner == 0) {
+      playTurn(value)
+    }
+  };
 
+  return { displayError, play, displayWinner, playTurn };
+};
+
+const DisplayBoard = (() => {
+
+  let { play } = Board();
+  const { arrayPosition } = Game();
+  const displayBoard = () => {
+    const buttonCount = 9;
+    document.querySelector('.buttons').innerHTML =
+      `<button class="btn-default button-1" value="1">${arrayPosition[0]}</button>
+    <button class="btn-default button-2" value="2">${arrayPosition[1]}</button>
+    <button class="btn-default button-3" value="3">${arrayPosition[2]}</button>
+    <button class="btn-default button-4" value="4">${arrayPosition[3]}</button>
+    <button class="btn-default button-5" value="5">${arrayPosition[4]}</button>
+    <button class="btn-default button-6" value="6">${arrayPosition[5]}</button>
+    <button class="btn-default button-7" value="7">${arrayPosition[6]}</button>
+    <button class="btn-default button-8" value="8">${arrayPosition[7]}</button>
+    <button class="btn-default button-9" value="9">${arrayPosition[8]}</button>
+    `
+    for (let index = 1; index <= buttonCount; index++) {
+      document.querySelector(`.button-${index}`).addEventListener('click', function () {
+        let val = this.value
+        play(val)
+      });
+    }
   }
 
-  const displayError = result => {
-    // position taken 
-  }
-}
+  return { displayBoard }
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  DisplayBoard.displayBoard()
+});
