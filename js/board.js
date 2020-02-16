@@ -2,7 +2,7 @@ const Game = () => {
   let playTurn = 1;
   let symbol_x = 'X';
   let symbol_o = 'O';
-  let arrayPosition = ['', '', '', '', '', '', '', '', '']
+  let arrayPosition = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
   const position = (position) => {
     arrayPosition[position - 1] = playTurn % 2 == 0 ? symbol_x : symbol_o;
@@ -11,18 +11,17 @@ const Game = () => {
   };
 
   const isEmpty = () => {
-    arrayPosition.forEach(element => {
-      if (element != '') return false;
-    });
+    for (let index = 0; index < arrayPosition.length; index++) {
+      if (arrayPosition[index] != ' ') return false;
+    }
 
     return true;
   };
 
   const isFull = () => {
-    array.forEach(element => {
-      if (element == '') return false;
-    });
-
+    for (let index = 0; index < arrayPosition.length; index++) {
+      if (arrayPosition[index] == ' ') return false;
+    }
     return true;
   };
 
@@ -42,8 +41,8 @@ const Game = () => {
 
   const winner = () => {
     for (let index = 1; index <= 3; index++) {
-      if (allEqual(i, symbol_x)) return 1;
-      if (allEqual(i, symbol_o)) return 2;
+      if (allEqual(index, symbol_x)) return 1;
+      if (allEqual(index, symbol_o)) return 2;
     }
     if (isFull()) return 3;
 
@@ -75,9 +74,9 @@ const Board = () => {
   }
 
   const displayWinner = () => {
-    if (game.winner == 1) {
+    if (winner() == 1) {
       // player 1 wins
-    } else if (game.winner == 2) {
+    } else if (winner() == 2) {
       // player 2 wins 
     } else {
       // its a draw
@@ -85,12 +84,12 @@ const Board = () => {
   };
 
   const play = (value) => {
-    while (winner == 0) {
+    while (winner() == 0) {
       playTurn(value)
     }
   };
 
-  return { displayError, play, displayWinner, playTurn };
+  return {play, displayWinner, playTurn };
 };
 
 const DisplayBoard = (() => {
