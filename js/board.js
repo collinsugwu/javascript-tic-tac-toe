@@ -6,9 +6,14 @@ const Game = () => {
 
   const position = (position) => {
     arrayPosition[position - 1] = playTurn % 2 == 0 ? symbol_x : symbol_o;
-    console.log(arrayPosition)
     playTurn += 1;
+
+    assignSignToButton(position, arrayPosition[position - 1])
   };
+
+  const assignSignToButton = (position, sign) => {
+    document.querySelector(`.button-${position}`).innerHTML = sign
+  }
 
   const isEmpty = () => {
     for (let index = 0; index < arrayPosition.length; index++) {
@@ -31,21 +36,29 @@ const Game = () => {
     return 2;
   };
 
-  const allEqual = (index, symbol) => {
-    if ((arrayPosition[0 + (index * 3)] + arrayPosition[1 + (index * 3)] + arrayPosition[2 + (index * 3)] == symbol * 3) ||
-      (arrayPosition[0 + index] + arrayPosition[3 + index] + arrayPosition[6 + index] == symbol * 3) ||
-      (arrayPosition[0 + (index * 2)] + arrayPosition[4] + arrayPosition[8 - (index * 2)] == symbol * 3 && index < 2)) return true;
+  const validateResult = (symbol) => {
+    //horizontal
+    if (arrayPosition[0] + arrayPosition[1] + arrayPosition[2] == symbol.repeat(3) ||
+      arrayPosition[3] + arrayPosition[4] + arrayPosition[5] == symbol.repeat(3) ||
+      arrayPosition[6] + arrayPosition[7] + arrayPosition[8] == symbol.repeat(3)) return true
+
+    // vertical
+    if (arrayPosition[0] + arrayPosition[3] + arrayPosition[6] == symbol.repeat(3) ||
+      arrayPosition[1] + arrayPosition[4] + arrayPosition[7] == symbol.repeat(3) ||
+      arrayPosition[2] + arrayPosition[5] + arrayPosition[8] == symbol.repeat(3)) return true
+
+    // diagonal
+    if (arrayPosition[0] + arrayPosition[4] + arrayPosition[8] == symbol.repeat(3) ||
+      arrayPosition[2] + arrayPosition[6] + arrayPosition[6] == symbol.repeat(3)) return true
 
     return false;
   };
 
   const winner = () => {
-    for (let index = 1; index <= 3; index++) {
-      if (allEqual(index, symbol_x)) return 1;
-      if (allEqual(index, symbol_o)) return 2;
-    }
-    if (isFull()) return 3;
+    if (validateResult(symbol_o)) return 1;
+    if (validateResult(symbol_x)) return 2;
 
+    if (isFull()) return 3;
     return 0;
   };
 
@@ -57,7 +70,7 @@ const Game = () => {
   }
 
   return {
-    position, isEmpty, isFull, checkTurn, allEqual, winner, validatePosition, arrayPosition
+    position, isEmpty, isFull, checkTurn, validateResult, winner, validatePosition, arrayPosition
   }
 };
 
@@ -68,28 +81,29 @@ const Board = () => {
     let result = validatePosition(positionValue);
     if (result == 0) {
       position(positionValue)
+      if (winner() != 0) {
+        displayWinner()
+      }
+
     } else {
       document.querySelector('.error').innerHTML = result;
     }
   }
 
   const displayWinner = () => {
-    if (winner() == 1) {
-      // player 1 wins
-    } else if (winner() == 2) {
-      // player 2 wins 
-    } else {
-      // its a draw
-    }
+    let gameWinner = winner();
+    console.log(gameWinner)
+    if (gameWinner == 1) console.log('1 wins')
+    if (gameWinner == 2) console.log('2 wins')
+
+    console.log('draw')
   };
 
   const play = (value) => {
-    // while (winner() == 0) {
-      playTurn(value)
-    // }
+    playTurn(value)
   };
 
-  return {play, displayWinner, playTurn };
+  return { play, displayWinner, playTurn };
 };
 
 const DisplayBoard = (() => {
