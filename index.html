@@ -12,36 +12,21 @@
   <div id="container">
     <h1 id="header">Tic Tac Toe Game</h1>
 
-    <form autocomplete="off">
+    <form autocomplete="off" onsubmit="preventDefault">
       <p>Name Player 1 ('X'): <input type="text" name="player1" required /></p>
       <p>Name Player 2 ('O'): <input type="text" name="player2" required /></p>
       <div id="button">
         <button id="startgame" type="submit">START GAME</button>
       </div>
     </form>
-
+    <div class="error"></div>
+    <div class="winner"></div>
     <table class="table">
-      <tr>
-        <td class="cell">X</td>
-        <td class="cell">O</td>
-        <td class="cell"></td>
-      </tr>
-      <tr>
-        <td class="cell"></td>
-        <td class="cell"></td>
-        <td class="cell"></td>
-      </tr>
-      <tr>
-        <td class="cell"></td>
-        <td class="cell">O</td>
-        <td class="cell">X</td>
-      </tr>
     </table>
   </div>
 
-  <script type="module" src="js/index.js"></script>
-  <script type="module" src="js/person.js"></script>
-  <script type="module" src="js/board.js"></script>
+  <script  src="js/index.js"></script>
+  <script src="js/board.js"></script>
 </body>
 
 </html>
