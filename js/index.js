@@ -17,13 +17,13 @@ const DisplayBoard = (() => {
         <td class="cell cell-9" data-cell='9'></td>
       </tr>
     `
-  }
+  };
 
-  return { displayBoard }
+  return { displayBoard };
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-  DisplayBoard.displayBoard()
+  DisplayBoard.displayBoard();
 });
 
 document.getElementById('startgame').addEventListener('click', () => {

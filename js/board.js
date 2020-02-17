@@ -8,20 +8,12 @@ const Game = () => {
     arrayPosition[position - 1] = playTurn % 2 == 0 ? symbol_x : symbol_o;
     playTurn += 1;
 
-    assignSignToButton(position, arrayPosition[position - 1])
+    assignSignToButton(position, arrayPosition[position - 1]);
   };
 
   const assignSignToButton = (position, sign) => {
-    document.querySelector(`.cell-${position}`).innerHTML = sign
+    document.querySelector(`.cell-${position}`).innerHTML = sign;
   }
-
-  const isEmpty = () => {
-    for (let index = 0; index < arrayPosition.length; index++) {
-      if (arrayPosition[index] != ' ') return false;
-    }
-
-    return true;
-  };
 
   const isFull = () => {
     for (let index = 0; index < arrayPosition.length; index++) {
@@ -69,8 +61,8 @@ const Game = () => {
   }
 
   return {
-    position, isEmpty, isFull, checkTurn, validateResult, winner, validatePosition, arrayPosition
-  }
+    position, isFull, checkTurn, validateResult, winner, validatePosition, arrayPosition
+  };
 };
 
 const Board = () => {
@@ -81,7 +73,7 @@ const Board = () => {
     if (result == 0) {
       position(positionValue)
       if (winner() != 0) {
-        displayWinner()
+        displayWinner();
       }
 
     } else {
@@ -97,12 +89,11 @@ const Board = () => {
     if (gameWinner == 1) document.querySelector('.winner').innerHTML = `${player1} wins`;
     if (gameWinner == 2) document.querySelector('.winner').innerHTML = `${player1} wins`;
     if (gameWinner == 3) document.querySelector('.winner').innerHTML = 'Its a Draw';
-
   };
 
 
   const play = (value) => {
-    playTurn(value)
+    playTurn(value);
   };
 
   return { play };
@@ -113,8 +104,8 @@ const AddEventToCell = (() => {
   const addEventToCell = () => {
     for (let index = 1; index <= 9; index++) {
       document.querySelector(`.cell-${index}`).addEventListener('click', function () {
-        let val = this.dataset.cell
-        play(val)
+        const val = this.dataset.cell;
+        play(val);
       });
     }
   }
@@ -122,5 +113,5 @@ const AddEventToCell = (() => {
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-  AddEventToCell.addEventToCell()
+  AddEventToCell.addEventToCell();
 });
