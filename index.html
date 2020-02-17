@@ -4,16 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Tic Tac Toe Game - JavaScript</title>
 </head>
 
 <body>
+  <div id="container">
+    <h1 id="header">Tic Tac Toe Game</h1>
 
-  <div class="error"></div>
-  <div class="buttons"></div>
+    <form autocomplete="off">
+      <p>Name Player 1 ('X'): <input type="text" name="player1" required /></p>
+      <p>Name Player 2 ('O'): <input type="text" name="player2" required /></p>
+      <div id="button">
+        <button id="startgame" type="submit">START GAME</button>
+      </div>
+    </form>
 
-  <script src="js/index.js"></script>
-  <script src="js/board.js"></script>
+    <table class="table">
+      <tr>
+        <td class="cell">X</td>
+        <td class="cell">O</td>
+        <td class="cell"></td>
+      </tr>
+      <tr>
+        <td class="cell"></td>
+        <td class="cell"></td>
+        <td class="cell"></td>
+      </tr>
+      <tr>
+        <td class="cell"></td>
+        <td class="cell">O</td>
+        <td class="cell">X</td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/person.js"></script>
+  <script type="module" src="js/board.js"></script>
 </body>
 
 </html>
