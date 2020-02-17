@@ -2,7 +2,7 @@ const Game = () => {
   let playTurn = 1;
   let symbol_x = 'X';
   let symbol_o = 'O';
-  let arrayPosition = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  let arrayPosition = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 
   const position = (position) => {
     arrayPosition[position - 1] = playTurn % 2 == 0 ? symbol_x : symbol_o;
@@ -73,10 +73,6 @@ const Game = () => {
   }
 };
 
-const Player = (name) => ({
-  
-})();
-
 const Board = () => {
   let { position, validatePosition, winner } = Game();
 
@@ -94,10 +90,12 @@ const Board = () => {
   }
 
   const displayWinner = () => {
-    let gameWinner = winner();
+    let player1 = document.getElementById('player1').value;
+    let player2 = document.getElementById('player2').value;
 
-    if (gameWinner == 1) document.querySelector('.winner').innerHTML = 'Player 1 wins';
-    if (gameWinner == 2) document.querySelector('.winner').innerHTML = 'Player 2 wins';
+    let gameWinner = winner();
+    if (gameWinner == 1) document.querySelector('.winner').innerHTML = `${player1} wins`;
+    if (gameWinner == 2) document.querySelector('.winner').innerHTML = `${player1} wins`;
     if (gameWinner == 3) document.querySelector('.winner').innerHTML = 'Its a Draw';
 
   };

@@ -27,5 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('startgame').addEventListener('click', () => {
-  document.querySelector('.table').style.display = 'table';
+  let player1 = document.getElementById('player1').value;
+  let player2 = document.getElementById('player2').value;
+  if (player1 == '' || player2 == '') {
+    document.querySelector('.validation').innerHTML = 'Name field is required';
+  } else {
+    document.querySelector('.table').style.display = 'table';
+  }
 })  
