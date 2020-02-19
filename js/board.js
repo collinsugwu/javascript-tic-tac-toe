@@ -68,6 +68,10 @@ const Game = () => {
 const Board = () => {
   const { position, validatePosition, winner } = Game();
 
+  const refresh = () => {
+    window.location.reload();
+  };
+
   const displayWinner = () => {
     const player1 = document.getElementById('player1').value;
     const player2 = document.getElementById('player2').value;
@@ -95,14 +99,9 @@ const Board = () => {
     }
   };
 
-
   const play = (value) => {
     playTurn(value);
   };
-
-  const refresh = () => {
-    location.reload()
-  }
 
   return { play };
 };
