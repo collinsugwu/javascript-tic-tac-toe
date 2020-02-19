@@ -83,7 +83,7 @@ const Board = () => {
     if (gameWinner === 1) document.querySelector('.winner').innerHTML = `${player1} wins`;
     if (gameWinner === 3) document.querySelector('.winner').innerHTML = 'Its a Draw';
 
-    document.getElementById('button').innerHTML = `<button class='refresh'>Restart Game</button>`;
+    document.getElementById('button').innerHTML = `<button class="refresh">Restart Game</button>`;
     document.querySelector('.refresh').addEventListener('click', refresh);
   };
 
