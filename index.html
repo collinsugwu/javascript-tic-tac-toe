@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Tic Tac Toe Game - JavaScript</title>
+</head>
+
+<body>
+  <div id="container">
+    <h1 id="header">Tic Tac Toe Game</h1>
+    <div class="validation"></div>
+    <form onsubmit="event.preventDefault();" autocomplete="off">
+      <p>Name Player 1 ('O'): <input id="player1" type="text" required /></p>
+      <p>Name Player 2 ('X'): <input id="player2" type="text" required /></p>
+      <div id="button">
+        <button id="startgame" type="submit">START GAME</button>
+      </div>
+    </form>
+    <div class="error"></div>
+    <div class="winner"></div>
+    <table class="table">
+    </table>
+  </div>
+
+  <script src="js/index.js"></script>
+  <script src="js/board.js"></script>
+</body>
+
+</html>

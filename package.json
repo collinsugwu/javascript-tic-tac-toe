@@ -4,6 +4,8 @@
   "description": "We’re making a Tic Tac Toe game you can play in your browser!",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ext .js --ignore-path .gitignore . --fix",
+    "lint:dev": "nodemon --exec \"npm run lint\" .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

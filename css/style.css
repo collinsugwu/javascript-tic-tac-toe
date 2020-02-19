@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Monoton&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background-color: #222b39;
+}
+
+#container {
+  color: #ffffff;
+  font-weight: lighter;
+  text-align: center;
+  font-family: "roboto", cursive;
+}
+
+#header {
+  font-size: 100px;
+  font-family: "Monoton", cursive;
+}
+
+form p {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+input {
+  width: auto;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 1.3rem;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgb(89, 114, 223);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 20px 0 20px 0;
+}
+
+table {
+  display: none;
+  border-spacing: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cell {
+  font-weight: 900;
+  font-size: 100px;
+  width: 150px;
+  height: 150px;
+  background-color: #268;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.4s;
+}
