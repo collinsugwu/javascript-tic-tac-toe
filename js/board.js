@@ -41,7 +41,7 @@ const Game = () => {
 
     // diagonal
     if (arrayPosition[0] + arrayPosition[4] + arrayPosition[8] === symbol.repeat(3)
-      || arrayPosition[2] + arrayPosition[6] + arrayPosition[6] === symbol.repeat(3)) return true;
+      || arrayPosition[2] + arrayPosition[4] + arrayPosition[6] === symbol.repeat(3)) return true;
 
     return false;
   };
@@ -72,10 +72,15 @@ const Board = () => {
     const player1 = document.getElementById('player1').value;
     const player2 = document.getElementById('player2').value;
 
+    document.querySelector('.table').style.visibility = 'hidden';
+    document.getElementById('startgame').style.visibility = 'hidden';
     const gameWinner = winner();
     if (gameWinner === 2) document.querySelector('.winner').innerHTML = `${player2} wins`;
     if (gameWinner === 1) document.querySelector('.winner').innerHTML = `${player1} wins`;
     if (gameWinner === 3) document.querySelector('.winner').innerHTML = 'Its a Draw';
+
+    document.getElementById('button').innerHTML = `<button class='refresh'>Restart Game</button>`;
+    document.querySelector('.refresh').addEventListener('click', refresh);
   };
 
   const playTurn = positionValue => {
@@ -94,6 +99,10 @@ const Board = () => {
   const play = (value) => {
     playTurn(value);
   };
+
+  const refresh = () => {
+    location.reload()
+  }
 
   return { play };
 };
