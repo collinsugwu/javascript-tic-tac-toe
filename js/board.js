@@ -61,12 +61,22 @@ const Game = () => {
   };
 
   return {
-    position, isFull, checkTurn, validateResult, winner, validatePosition, arrayPosition,
+    position,
+    isFull,
+    checkTurn,
+    validateResult,
+    winner,
+    validatePosition,
+    arrayPosition,
   };
 };
 
 const Board = () => {
-  const { position, validatePosition, winner } = Game();
+  const {
+    position,
+    validatePosition,
+    winner,
+  } = Game();
 
   const refresh = () => {
     window.location.reload();
@@ -83,7 +93,7 @@ const Board = () => {
     if (gameWinner === 1) document.querySelector('.winner').innerHTML = `${player1} wins`;
     if (gameWinner === 3) document.querySelector('.winner').innerHTML = 'Its a Draw';
 
-    document.getElementById('button').innerHTML = `<button class="refresh">Restart Game</button>`;
+    document.getElementById('button').innerHTML = '<button class="refresh">Restart Game</button>';
     document.querySelector('.refresh').addEventListener('click', refresh);
   };
 
@@ -103,11 +113,15 @@ const Board = () => {
     playTurn(value);
   };
 
-  return { play };
+  return {
+    play,
+  };
 };
 
 const AddEventToCell = (() => {
-  const { play } = Board();
+  const {
+    play,
+  } = Board();
   const addEventToCell = () => {
     for (let index = 1; index <= 9; index += 1) {
       document.querySelector(`.cell-${index}`).addEventListener('click', function eVal() {
@@ -116,7 +130,9 @@ const AddEventToCell = (() => {
       });
     }
   };
-  return { addEventToCell };
+  return {
+    addEventToCell,
+  };
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

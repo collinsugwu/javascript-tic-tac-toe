@@ -18,7 +18,9 @@ const DisplayBoard = (() => {
     `;
   };
 
-  return { displayBoard };
+  return {
+    displayBoard,
+  };
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
