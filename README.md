@@ -34,7 +34,6 @@
 </p>
 
 
-
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
@@ -54,6 +53,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+Link to the [live](https://raw.githack.com/collinsugwu/javascript-tic-tac-toe/tree/ui-design) version
 <p>Game View</p>
 <img src="./img/tic-tac-toe.png">
 
