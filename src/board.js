@@ -138,3 +138,5 @@ const AddEventToCell = (() => {
 document.addEventListener('DOMContentLoaded', () => {
   AddEventToCell.addEventToCell();
 });
+
+module.exports = { Game, Board };

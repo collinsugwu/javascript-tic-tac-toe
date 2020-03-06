@@ -1,3 +1,5 @@
+import validate from './validate';
+
 const DisplayBoard = (() => {
   const displayBoard = () => {
     document.querySelector('.table').innerHTML = ` <tr>
@@ -30,9 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('startgame').addEventListener('click', () => {
   const player1 = document.getElementById('player1').value;
   const player2 = document.getElementById('player2').value;
-  if (player1 === '' || player2 === '') {
+  if (validate(player1, player2)) {
     document.querySelector('.validation').innerHTML = 'Name field is required';
   } else {
     document.querySelector('.table').style.display = 'table';
   }
 });
+
+module.exports = DisplayBoard;
