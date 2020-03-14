@@ -1,9 +1,9 @@
 const validate = require('../src/validate');
 
 test('validate presence of player name', () => {
-  expect(validate('value1', 'value2')).toBeTruthy();
+  expect(validate('', '')).toBe(false);
 });
 
 test('validate absence of player name', () => {
-  expect(validate('', '')).toBeFalsy();
+  expect(validate('aa', 'bb')).toBe(true);
 });
