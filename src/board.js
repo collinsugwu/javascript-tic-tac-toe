@@ -11,7 +11,10 @@ const Game = () => {
   const position = (position) => {
     arrayPosition[position - 1] = playTurn % 2 === 0 ? symbolX : symbolO;
     playTurn += 1;
+  };
 
+  const checkPosition = (position) => {
+    position(position);
     assignSignToButton(position, arrayPosition[position - 1]);
   };
 
@@ -68,12 +71,13 @@ const Game = () => {
     winner,
     validatePosition,
     arrayPosition,
+    checkPosition,
   };
 };
 
 const Board = () => {
   const {
-    position,
+    checkPosition,
     validatePosition,
     winner,
   } = Game();
@@ -100,7 +104,7 @@ const Board = () => {
   const playTurn = positionValue => {
     const result = validatePosition(positionValue);
     if (result === 0) {
-      position(positionValue);
+      checkPosition(positionValue);
       if (winner() !== 0) {
         displayWinner();
       }
@@ -138,3 +142,5 @@ const AddEventToCell = (() => {
 document.addEventListener('DOMContentLoaded', () => {
   AddEventToCell.addEventToCell();
 });
+
+module.exports = { Game, Board };
