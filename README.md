@@ -53,7 +53,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Link to the [live](https://raw.githack.com/collinsugwu/javascript-tic-tac-toe/tree/ui-design) version
+Link to the [live](https://raw.githack.com/collinsugwu/javascript-tic-tac-toe/development/dist/index.html) version
 <p>Game View</p>
 <img src="./img/tic-tac-toe.png">
 
